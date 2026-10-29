@@ -1,0 +1,129 @@
+<body>
+    
+    <div class="wrap">
+        <span>Sua loja - Administração</span>
+        <h1>Itens</h1>
+        <p class="lead">Cadastre e atualize os itens vendidos. Itens com pedidos ou movimentações registrados não são apagados: ficam inativos.</p>
+
+        <div class="toolbar">
+            <form action="formBusca" novalidate>
+                <div>
+                    <label for="buscaId">Consultar por ID</label>
+                    <input id="buscaId" type="number" min="1" inputmode="numeric">
+                </div>
+                <button class="btnSec" type="submit">Buscar</button>
+            </form>
+            <div class="gpr">
+                <div>
+                    <label for="filtro">Situação</label>
+                    <select id="filtro">
+                        <option value="">Todos</option>
+                        <option value="ATIVO">Ativos</option>
+                        <option value="INATIVO">Inativos</option>
+                    </select>
+                </div>
+                <button class="btn" id="btnNovo" type="button" >+ Novo item</button>
+            </div>
+        </div>
+
+        <div class="layout">
+            <section class="cardTableBox" >
+                <p class="empty" id="listaCarregando" >Carregando</p>
+                <p class="empty" id="lista-erro" role="alert" hidden></p>
+                <p class="empty" id="lista-vazia" hidden>Nenhum item encontrado.</p>
+                <table id="tabela" hidden>
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col" class="num">Preço</th>
+                            <th scope="col">Situação</th>
+                            <th scope="col"><span class="sr" style="position:absolute;left:-9999px">Ações</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpo"></tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2 id="formTitulo">Novo item</h2>
+                <p class="aviso" id="avisoMov" hidden >Este item já tem pedidos ou movimentações. Ele não pode ser excluído, apenas desativado.</p>
+
+                //O QUE FAZ O "NOVALIDATE"
+                <form id="formItem" novalidate>
+                    <div class="field" id="campoId" hidden>
+                        <label for="fID">ID</label>
+                        <input type="text" id="fID" readonly>
+                    </div>
+
+                    <div class="field">
+                        <label for="fNome">Nome</label>
+                        <input id="fNome" maxlength="120" required>
+                        <div class="err" id="eNome" hidden></div>
+                    </div>
+
+                    <div class="field">
+                        <label for="fCategoria">Categoria</label>
+                        <input id="fCategoria" list="listaCategoria" maxlength="60" required>
+                        <datalist id="listaCategoria"></datalist>
+                        <div class="err" id="Ecategoria" hidden></div>
+                    </div>
+
+                    <div class="field">
+                        <label for="fDescricao">Descrição</label>
+                        <textarea id="fDescricao" maxlength="500"></textarea>
+                    </div>
+
+                    <div class="two">
+                        <div class="field">
+                            <label for="field">Preço(R$)</label>
+                            <input type="number" min="0" inputmode="decimal" required>
+                            <div class="err" id="ePreco" hidden></div>
+                        </div>
+                        <div class="field">
+                            <label for="fTipo">Tipo</label>
+                            <select id="fTipo">
+                                <option value="">Selecione</option>
+                                <option value="PRODUTO">Produto</option>
+                                <option value="SERVICO">Serviço</option>
+                            </select>
+                            <div class="err" id="eTipo" hidden></div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="fSituacao">Situação</label>
+                        <select id="fSituacao">
+                            <option value="ATIVO">Ativo</option>
+                            <option value="INATIVO">Inativo</option>
+                        </select>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn" id="btnSalvar" type="submit">Cadastrar</button>
+                        <button class="btnSec" id="btnCancelar" type="button" >Limpar</button>
+                        <span class="spacer"></span>
+                        <button class="btnExcluir" id="btnExcluir" type="button" hidden>Excluir</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <div id="msg" role="status" hidden></div>
+
+    <template>
+        <tr>
+            <td class="idcID"></td>
+            <td class="cNome" ></td>
+            <td class="cCategoria"></td>
+            <td class="cTipo"></td>
+            <td class="numCPreco"></td>
+            <td><span class="cSituacao"></span></td>
+            <td><button class="linkCEditar" type="button"></button></td>
+        </tr>
+    </template>
+
+</body>

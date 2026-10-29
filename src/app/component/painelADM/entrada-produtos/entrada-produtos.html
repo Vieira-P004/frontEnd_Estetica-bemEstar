@@ -1,0 +1,86 @@
+<main>
+    <div class="eyebrow">Estoque · Movimentações</div>
+    <h1>Registrar entrada de produtos</h1>
+    <p class="intro">Registre os produtos recebidos pelo estoque. Ao confirmar, a movimentação será enviada ao backend, que grava a entrada e deixa o trigger do banco atualizar a quantidade e os valores do produto.</p>
+    <div class="layout">
+        <section class="card">
+            <h2>Dados da entrada</h2>
+            <form id="entradaForm">
+                <div class="field full">
+                    <label for="produto">Produto *</label>
+                    <select id="produto" name="produto_id" required>
+                        <option value="">Selecione um produto</option>
+                    </select>
+                    <span class="hint">A lista deve ser carregada dos produtos cadastrados no backend.
+
+                    </span>
+                </div>
+
+                <div class="field">
+                    <label for="data">Data de entrada *</label>
+                    <input id="data" name="data_entrada" type="date" required>
+                </div>
+
+                <div class="field">
+                    <label for="quantidade">Quantidade recebida *</label>
+                    <input id="quantidade" name="quantidade" type="number" min="0.001" step="0.001" placeholder="Ex.: 12" required>
+                </div>
+
+                <div class="field">
+                    <label for="unidade">Unidade *</label>
+                    <select id="unidade" name="unidade" required>
+                        <option value="">Selecione</option>
+                        <option value="un">Unidade (un)</option>
+                        <option value="cx">Caixa (cx)</option>
+                        <option value="pct">Pacote (pct)</option>
+                        <option value="kg">Quilograma (kg)</option>
+                        <option value="g">Grama (g)</option>
+                        <option value="L">Litro (L)</option>
+                        <option value="mL">Mililitro (mL)</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="valor">Valor unitário de entrada (R$) *</label>
+                    <input id="valor" name="valor_unitario" type="number" min="0" step="0.01" placeholder="Ex.: 15,90" required>
+                    <span class="hint">Custo unitário pago/registrado na entrada.</span>
+                </div>
+
+                <div class="actions">  
+                    <button id="submitBtn" type="submit">Confirmar entrada</button>
+                    <button class="secondary" type="reset">Limpar</button>
+                </div>
+            </form>
+            <div id="status" class="status" role="status" aria-live="polite"></div>
+        </section>
+        <aside class="card">
+            <h2>O que acontece ao confirmar?</h2>
+            <div class="notice">
+                <strong>Atualização feita no banco de dados</strong>O Angular não altera o estoque diretamente. Ele apenas envia os dados ao backend.
+            </div>
+            <div class="steps">
+            <div class="step">
+                <span class="num">1</span>
+                <div>
+                    <strong>Registrar a movimentação</strong><br>O backend insere a entrada em <code>entrada_produto</code>.
+                </div>
+            </div>
+            <div class="step">
+                <span class="num">2</span>
+                <div>
+                    <strong>Executar o trigger</strong><br>O trigger existente atualiza a quantidade em estoque e o valor do produto. Não é necessário repetir essa lógica no frontend.
+                </div>
+            </div>
+            <div class="step">
+                <span class="num">3</span>
+                <div>
+                    <strong>Concluir tudo junto</strong><br>O insert e a atualização do trigger participam da mesma transação. Se ocorrer um erro, o backend deve fazer rollback.
+                </div>
+            </div>
+            </div>
+            <div class="notice" style="margin-top:20px;margin-bottom:0">
+                <strong>Integração necessária</strong>Este HTML espera uma API em <code>/api/entradas-produto</code> e uma API de produtos em <code>/api/produtos</code>. Ajuste os endereços conforme seu backend.
+            </div>
+        </aside>
+    </div>
+</main>

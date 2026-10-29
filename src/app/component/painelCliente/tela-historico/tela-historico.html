@@ -1,0 +1,61 @@
+<main>
+    <h1>Seus pedidos</h1>
+
+    <p class="lead" id="carregamento">Carregando...</p>
+    <div class="cardEmpty" id="erro" role="alert" hidden></div>
+    <div class="cardEmpty" id="vazio" hidden>Você ainda não fez nenhum pedido.</div>
+
+    <div class="layout" id="layout" hidden></div>
+    
+    <div class="listaColuna">
+        <p class="lead" id="contagem"></p>
+        <div class="cardLista" id="lista" role="list"></div>
+    </div>
+
+    <div class="detalheColuna">
+        <div class="cardEmpty" id="detalheVazio">Selecione um pedido para ver os detalhes.</div>
+        <div class="cardEmpty" id="detalheCarregando">Carregando</div>
+        <div class="cardEmpty" id="detalheErro" role="alert" hidden></div>
+
+        <article class="cardDetalhe" id="detalhe" hidden>
+            <button class="linkBack" id="voltar" type="button">Voltar aos pedidos</button>
+            <h2>Pedido # <span id="dNumero"></span></h2>
+            <div class="sub">
+                Feito em <span id="dData"></span>
+                &nbsp; <span class="badge" id="dSituacao"></span>
+            </div>
+
+            <table class="itens">
+                <thead>
+                    <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Qtd.</th>
+                        <th scope="col">Preço un.</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="dItens">
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Total</td>
+                        <td id="total"></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <p class="sub">Os preços acima são os da data da compra.</p>
+            <div class="note" id="dAviso" hidden>Pedido registrado. Aguardando tratamento da nossa equipe.</div>
+        </article>
+
+        <template id="tplItem">
+            <tr>
+                <td class="iNome"></td>
+                <td class="iQtd"></td>
+                <td class="iPreco"></td>
+                <td class="iSubtotal"></td>
+            </tr>
+        </template>
+    </div>
+</main>

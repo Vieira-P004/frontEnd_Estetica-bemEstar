@@ -1,9 +1,6 @@
 <nav>
     <ul>
-        <li><a href="">Cadastrar Cliente</a></li>
-        <li><a href="">Listar Cliente</a></li>
-        <li><a href="">Consulta Cliente</a></li>
-        <li><a href="">Edição Cliente</a></li>
+        <button>Catálago</button>
     </ul>
 </nav>
 <main>
@@ -24,20 +21,38 @@
 
                 <label for="email">E-mail</label>
                 <input type="text" name="email" id="email" placeholder="Informe seu email">
+
+                <label for="sexo">Sexo</label>
+                <select name="sexo" id="sexo">
+                    <option value="sexoM">Masculino</option>
+                    <option value="sexoF">Feminino</option>
+                    <option value="sexoN">Não quero informar</option>
+                </select>
             </div>
 
             <div>
-                <label for="rua">Rua</label>
-                <input type="text" name="rua" id="rua">
+                <label for="cep">cep</label>
+                <input type="text" name="cep" id="cep" maxlength="9">
+
+                <label for="rua">Logradouro</label>
+                <input type="text" name="logradouro" id="logradouro" maxlength="100">
 
                 <label for="numero">Número</label>
                 <input type="text" name="numero" id="numero">
 
                 <label for="bairro">Bairro</label>
-                <input type="text" name="bairro" id="bairro">
+                <input type="text" name="bairro" id="bairro" maxlength="20">
 
                 <label for="cidade">Cidade</label>
-                <input type="text" name="cidade" id="cidade"> 
+                <input type="text" name="cidade" id="cidade" maxlength="60"> 
+
+                <label for="rua">Uf</label>
+                <input type="text" name="uf" id="uf" maxlength="2">
+            </div>
+
+            <div>
+                <button type="submit" id="btnAdd">Cadastrar Cliente</button>
+                <button type="reset" id="btnLimpar">Limpar dados</button>
             </div>
         </form>
     </div>
