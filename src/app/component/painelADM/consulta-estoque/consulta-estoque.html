@@ -1,0 +1,52 @@
+<main>
+    <div class="eyebrow">CONTROLE DE PRODUTOS</div>
+    <h1>Consulta de estoque</h1>
+    <p class="intro">Consulte a posição atual do estoque, com informações do item e do produto. Liste todos os registros ou pesquise um item pelo ID.</p>
+    <section class="card">
+        <div class="toolbar">
+            <div class="field">
+                <label for="itemId">Pesquisar por ID do item</label>
+                <input id="itemId" type="number" min="1" placeholder="Digite o ID do item">
+            </div>
+            <button id="searchBtn">Consultar por ID</button>
+            <button class="secondary" id="listBtn">Listar estoque</button>
+        </div>
+
+        <div class="summary">
+            <div class="pill">
+                <strong id="total">—</strong> registros encontrados
+            </div>
+            <div class="pill">
+                <strong id="activeCount">—</strong> itens ativos
+            </div>
+            <div class="pill"><strong id="inactiveCount">—</strong> itens inativos
+            </div>
+        </div>
+
+
+        <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Iditem</th>
+                        <th>Item</th>
+                        <th>Descrição Item</th>
+                        <th>Preço</th>
+                        <th>Preço de Venda</th>
+                        <th>Unidade</th>
+                        <th>Categoria</th>
+                        <th>Quantidade em estoque</th>
+                        <th>Ativo ou Não</th>
+                    </tr>
+                </thead>
+                <tbody id="rows">
+                    <tr>
+                        <td colspan="9" class="empty">Clique em “Listar estoque” para carregar os registros.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="note">API: <code>GET /api/estoque</code> lista os registros; <code>GET /api/estoque/:id</ code> consulta por ID. Quando o ID não existir, a API deve responder com HTTP 404 Not Found.</p>
+    </section>
+</main>

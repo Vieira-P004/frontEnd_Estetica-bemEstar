@@ -1,0 +1,70 @@
+ <main class="pagina">
+    <p class="pagina__eyebrow">Controle de atendimentos</p>
+    <h1 class="pagina__titulo">Consulta de pedidos</h1>
+    <p class="pagina__descricao">
+      Acompanhe os pedidos com cliente, itens, funcionário responsável e valores.
+      Liste os pedidos em aberto, abra um pedido pelo ID e atualize o status
+      conforme o fluxo da empresa.
+    </p>
+
+    <section class="cartao" aria-labelledby="rotulo-busca">
+      <label class="campo__rotulo" id="rotulo-busca" for="busca-id">Pesquisar por número do pedido</label>
+
+      <form class="busca" id="form-busca" novalidate>
+        <input
+          class="campo__input"
+          id="busca-id"
+          name="id"
+          type="text"
+          inputmode="numeric"
+          autocomplete="off"
+          placeholder="Digite o número do pedido"
+        />
+        <button class="botao botao--primario" type="submit">Consultar por ID</button>
+        <button class="botao botao--secundario" type="button" id="btn-abertos">Pedidos em aberto</button>
+        <button class="botao botao--secundario" type="button" id="btn-todos">Listar todos</button>
+      </form>
+
+      <div class="resumo" aria-live="polite">
+        <span class="chip"><strong id="r-total">—</strong> pedidos encontrados</span>
+        <span class="chip chip--aberto"><strong id="r-aberto">—</strong> abertos</span>
+        <span class="chip chip--processamento"><strong id="r-processamento">—</strong> em processamento</span>
+        <span class="chip chip--concluido"><strong id="r-concluido">—</strong> concluídos</span>
+        <span class="chip chip--cancelado"><strong id="r-cancelado">—</strong> cancelados</span>
+      </div>
+
+      <div id="mensagem" class="mensagem" role="status" hidden></div>
+
+      <div class="tabela-wrap">
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th class="col-seta"><span class="sr-only">Detalhes</span></th>
+              <th>Pedido</th>
+              <th>ID cliente</th>
+              <th>Cliente</th>
+              <th>Data do atendimento</th>
+              <th class="num">Valor total</th>
+              <th>Status</th>
+              <th>Alterar status</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-pedidos">
+            <tr>
+              <td colspan="8" class="tabela__vazio">
+                Clique em “Pedidos em aberto” ou “Listar todos” para carregar os registros.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="rodape-api">
+        API: <code>GET /api/pedidos</code> lista (aceita <code>?status=Aberto</code>);
+        <code>GET /api/pedidos/:id</code> consulta por ID;
+        <code>PATCH /api/pedidos/:id/status</code> altera o status.
+        Se o ID não existir, a API responde com HTTP 404; transições inválidas
+        são recusadas pelo backend (HTTP 409/422).
+      </p>
+    </section>
+  </main>
