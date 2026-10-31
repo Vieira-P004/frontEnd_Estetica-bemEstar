@@ -8,7 +8,7 @@ import { Carrinho } from './component/painelCliente/carrinho/carrinho';
 import { Categoria } from './component/painelCliente/categoria/categoria';
 import { ListarCliente } from './component/painelCliente/cliente/listar-cliente/listar-cliente';
 import { TelaHistorico } from './component/painelCliente/tela-historico/tela-historico';
-import { Tela01 } from './component/painelCliente/tela01/tela01';
+import { Tela01 } from './component/painelCliente/catalogo/tela01';
 import { Menu } from './component/menu/menu';
 
 export const routes: Routes = [
