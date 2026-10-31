@@ -9,16 +9,17 @@ import { Categoria } from './component/painelCliente/categoria/categoria';
 import { ListarCliente } from './component/painelCliente/cliente/listar-cliente/listar-cliente';
 import { TelaHistorico } from './component/painelCliente/tela-historico/tela-historico';
 import { Tela01 } from './component/painelCliente/tela01/tela01';
+import { Menu } from './component/menu/menu';
 
 export const routes: Routes = [
     {
         //JOGA PARA PÁGINA INICIAL SE A URL FICAR VÁZIA
         path:'',
-        redirectTo:"/home",
+        redirectTo:"/menu",
         pathMatch:'full'
     },
     {
-        path:"Funcionario",
+        path:"funcionario",
         component: Funcionario
     },
     {
@@ -26,6 +27,36 @@ export const routes: Routes = [
         component:CadItens
     },
     {
-        path:''
+        path:'consultaPedido',
+        component:Consultapedido
+    },
+    {
+        path:'entradaProdutos',
+        component: EntradaProdutos
+    },
+    {
+        path:'carrinho',
+        component: Carrinho
+    },
+    {
+        path:'categoria',
+        component: Categoria
+    },
+    {
+        path:'listarCliente',
+        component: ListarCliente
+    },
+    {
+        path:'telaHistorico',
+        component: TelaHistorico
+    },
+    {
+        path:'tela01',
+        component: Tela01
+    },
+    {
+        path:'menu',
+        component: Menu
     }
+
 ];
